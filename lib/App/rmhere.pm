@@ -80,7 +80,7 @@ sub rmhere {
         # for testing
         sleep(0.0001);
 
-        $progress->update(message => $i) if $progress;
+        $progress->update(message => "Deleted $i files") if $progress;
     }
     $progress->finish if $progress;
     [200, "OK"];
