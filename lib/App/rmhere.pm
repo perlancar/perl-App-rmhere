@@ -23,15 +23,44 @@ $SPEC{rmhere} = {
     v             => 1.1,
     summary       => 'Delete files in current directory',
     args          => {
+        estimate => {
+            summary => 'Count files first before start deleting',
+            schema  => 'bool*',
+        },
         here => {
             summary => 'Override current directory',
             schema  => 'str*',
         },
-        preestimate => { # XXX name
-            summary => 'Count files first before start deleting',
-            schema  => 'bool*',
+        interactive => {
+            summary => 'Whether to ask first before deleting each file',
+            schema  => [bool => default=>1],
+            cmdline_aliases => {
+                i => {},
+                force => {
+                    summary => 'Equivalent to --nointeractive',
+                    code => sub { shift->{interactive} = 0 },
+                },
+                f => {
+                    summary => 'Equivalent to --nointeractive',
+                    code => sub { shift->{interactive} = 0 },
+                },
+            },
         },
-        # TODO: force option
+        progress => {
+            summary => 'Show progress report',
+            schema  => 'bool*',
+            cmdline_aliases => {
+                p => {},
+                P => {
+                    summary => 'Equivalent to --progress --estimate',
+                    code => sub {
+                        my $args = shift;
+                        $args->{progress} = 1;
+                        $args->{estimate} = 1;
+                    },
+                },
+            },
+        },
         # TODO: match option
         # TODO: dir option
         # TODO: recursive option
@@ -44,8 +73,15 @@ $SPEC{rmhere} = {
 sub rmhere {
     my %args = @_;
 
-    my $progress = $args{-progress};
-    my $dry_run  = $args{-dry_run};
+    my $progress    = $args{-progress};
+    my $dry_run     = $args{-dry_run};
+    my $interactive = $args{interactive};
+
+    # avoid output becomes too crowded/jumbled
+    undef($progress) if $interactive;
+
+    # by default we don't show progress, for performance
+    undef($progress) unless $args{progress};
 
     local $CWD = $args{here} if defined $args{here};
 
@@ -61,7 +97,7 @@ sub rmhere {
     my $files;
 
     $progress->pos(0) if $progress;
-    if ($args{preestimate}) {
+    if ($args{estimate}) {
         $files = [];
         while (defined(my $e = $get_next_file->())) {
             push @$files, $e;
@@ -72,15 +108,33 @@ sub rmhere {
     }
 
     my $i = 0;
+  ENTRY:
     while (defined(my $e = $files ? shift(@$files) : $get_next_file->())) {
-        $log->info("Deleting $e ...");
         $i++;
-        unlink($e) unless $dry_run;
+        if ($interactive) {
+            while (1) {
+                print "Delete $e (y/n)? ";
+                my $ans = <STDIN>;
+                if ($ans =~ /^[Nn]$/) {
+                    next ENTRY;
+                } elsif ($ans =~ /^[Yy]$/) {
+                    last;
+                } else {
+                    print "Invalid answer. ";
+                }
+            }
+        }
+        if ($dry_run) {
+            $log->info("DRY_RUN: Deleting $e ...");
+            next;
+        } else {
+            unlink($e);
+        }
 
-        # for testing
-        sleep(0.0001);
-
-        $progress->update(message => "Deleted $i files") if $progress;
+        if ($progress) {
+            $progress->update(message => "Deleted $i files".
+                          $files ? " (out of ".@$files.")" : "");
+        }
     }
     $progress->finish if $progress;
     [200, "OK"];
