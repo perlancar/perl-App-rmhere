@@ -37,8 +37,9 @@ Only delete files matching a wildcard:
 When deleting many files in a directory (thousands, millions), the venerable
 L<rm> Unix command is rather cumbersome to use. If you issue C<rm *> the shell
 will usually complain with "Argument list too long" because it expands the
-wildcard first. You can also use << find ./ -type f -maxdepth 1 -delete >>. This
-B<rmhere> command is equivalent to that, with some extra options and features:
+wildcard first. You can also use C<< find ./ -type f -maxdepth 1 -delete >>.
+This B<rmhere> command is equivalent to that, with some extra options and
+features:
 
 =over
 
