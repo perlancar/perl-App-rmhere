@@ -133,7 +133,7 @@ sub rmhere {
 
         if ($progress) {
             $progress->update(message => "Deleted $i files".
-                          $files ? " (out of ".@$files.")" : "");
+                                  ($files ? " (out of ".@$files.")" : ""));
         }
     }
     $progress->finish if $progress;
