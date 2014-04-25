@@ -104,6 +104,7 @@ sub rmhere {
         return undef;
     };
     my $files;
+    my $num_files;
 
     $progress->pos(0) if $progress;
     if ($args{estimate}) {
@@ -111,7 +112,8 @@ sub rmhere {
         while (defined(my $e = $get_next_file->())) {
             push @$files, $e;
         }
-        $progress->target(~~@$files) if $progress;
+        $num_files = @$files;
+        $progress->target($num_files) if $progress;
     } else {
         $progress->target(undef) if $progress;
     }
@@ -141,8 +143,9 @@ sub rmhere {
         }
 
         if ($progress) {
-            $progress->update(message => "Deleted $i files".
-                                  ($files ? " (out of ".@$files.")" : ""));
+            $progress->update(
+                message => "Deleted $i files".
+                    ($files ? " (out of $num_files)" : ""));
         }
     }
     $progress->finish if $progress;
