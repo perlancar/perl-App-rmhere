@@ -26,6 +26,15 @@ $SPEC{rmhere} = {
         estimate => {
             summary => 'Count files first before start deleting',
             schema  => 'bool*',
+            description => <<'_',
+
+With this opotion, the program will do an `opendir` and list the directory
+first. This can take several minutes if the directory is large, so the program
+will not start deleting after several minutes. But with this option, we know how
+many files we want to delete, so the progress report will know when to reach
+100%.
+
+_
         },
         here => {
             summary => 'Override current directory',
