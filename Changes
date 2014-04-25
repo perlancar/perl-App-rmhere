@@ -1,5 +1,10 @@
 Revision history for App-rmhere
 
+0.02    2014-04-25 (SHARYANTO)
+
+        - Fix minor bug in displaying progress message.
+
+
 0.01    2014-04-04 (SHARYANTO)
 
         - First release.
