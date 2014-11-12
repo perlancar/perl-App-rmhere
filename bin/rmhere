@@ -71,7 +71,7 @@ For safety, the default behavior is C<-i>. That means, if B<rmhere> is executed
 without argument, it will ask before deleting each file.
 
 
-=head1 COMMAND-LINE OPTIONS
+=head1 OPTIONS
 
 =head2 --[no]dir, -d
 
