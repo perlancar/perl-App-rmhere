@@ -1,16 +1,17 @@
 #!perl
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
-
-# VERSION
 
 use Perinci::CmdLine;
 Perinci::CmdLine->new(url => '/App/rmhere/rmhere')->run;
 
 1;
-# ABSTRACT: Remove all files in the current directory (with options)
+# ABSTRACT:
 # PODNAME:
 
 =head1 SYNOPSIS

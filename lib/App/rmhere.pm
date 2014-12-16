@@ -1,5 +1,8 @@
 package App::rmhere;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
@@ -14,8 +17,6 @@ use Time::HiRes qw(sleep);
 #require Exporter;
 #our @ISA       = qw(Exporter);
 #our @EXPORT_OK = qw(rmhere);
-
-# VERSION
 
 our %SPEC;
 
@@ -153,7 +154,7 @@ sub rmhere {
 }
 
 1;
-# ABSTRACT: Delete files in current directory
+# ABSTRACT:
 
 =head1 SYNOPSIS
 
