@@ -11,7 +11,7 @@ Perinci::CmdLine->new(url => '/App/rmhere/rmhere')->run;
 
 1;
 # ABSTRACT: Remove all files in the current directory (with options)
-# PODNAME: rmhere
+# PODNAME:
 
 =head1 SYNOPSIS
 
