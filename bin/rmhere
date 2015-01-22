@@ -7,8 +7,8 @@ use 5.010001;
 use strict;
 use warnings;
 
-use Perinci::CmdLine;
-Perinci::CmdLine->new(url => '/App/rmhere/rmhere')->run;
+use Perinci::CmdLine::Any -prefer_lite=>1;
+Perinci::CmdLine::Any->new(url => '/App/rmhere/rmhere')->run;
 
 1;
 # ABSTRACT:
