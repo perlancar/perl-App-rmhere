@@ -72,54 +72,6 @@ For safety, the default behavior is C<-i>. That means, if B<rmhere> is executed
 without argument, it will ask before deleting each file.
 
 
-=head1 OPTIONS
-
-=head2 --[no]dir, -d
-
-Whether or not to delete directories. The default is to not delete directories.
-
-=head2 --dry-run
-
-=head2 --estimate
-
-Count the number of files to delete first.
-
-=head2 --[no]file
-
-Whether or not to delete files. Default to yes.
-
-XXX Should we have this option at all? Considering that -f is already taken for
---force.
-
-=head2 --force, -f
-
-Equivalent to --nointeractive.
-
-=head2 --here=DIR
-
-Set directory to start deleting.
-
-=head2 --[no]interactive, -i
-
-Whether to ask interactively before deleting each entry.
-
-=head2 --match PAT
-
-Only delete item matching wildcard pattern C<PAT>.
-
-=head2 --progress, -p
-
-Show progress report.
-
-=head2 -P
-
-Equivalent to --progress --estimate.
-
-=head2 --recursive, -R
-
-Delete recursively. Turn on C<--dir> implicitly.
-
-
 =head1 PERFORMANCE NOTES
 
 My system: customer SATA HDD 7200rpm, Debian/Linux, ext3fs, Core i5-2400 3.1GHz.
