@@ -1,5 +1,13 @@
 Revision history for App-rmhere
 
+0.04    2015-01-22 (PERLANCAR)
+
+	- No functional changes.
+
+	- Switch to Perinci::CmdLine::Lite because it now supports progress
+	  bar.
+
+
 0.03    2014-04-25 (SHARYANTO)
 
         - Fix another bug in displaying progress message/percentage. D'oh.
