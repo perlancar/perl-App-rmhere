@@ -7,7 +7,7 @@ use 5.010001;
 use strict;
 use warnings;
 #use experimental 'smartmatch';
-use Log::Any::IfLOG '$log';
+use Log::ger;
 
 use File::chdir;
 
@@ -137,7 +137,7 @@ sub rmhere {
             }
         }
         if ($dry_run) {
-            $log->info("DRY_RUN: Deleting $e ...");
+            log_info("DRY_RUN: Deleting $e ...");
             next;
         } else {
             unlink($e);
