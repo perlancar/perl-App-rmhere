@@ -1,3 +1,10 @@
+0.07    2017-07-07 (PERLANCAR)
+
+	- No functional changes.
+
+	- Replace Log::Any with Log::ger.
+
+
 0.06    2015-09-03 (PERLANCAR)
 
 	- No functional changes.
