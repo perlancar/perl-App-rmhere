@@ -1,18 +1,18 @@
-0.08    2017-07-07 (PERLANCAR)
+0.08    2017-07-07  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- [dist] Enable static install.
 
 
-0.07    2017-07-07 (PERLANCAR)
+0.07    2017-07-07  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- Replace Log::Any with Log::ger.
 
 
-0.06    2015-09-03 (PERLANCAR)
+0.06    2015-09-03  Released-By: PERLANCAR
 
 	- No functional changes.
 
@@ -21,14 +21,14 @@
 	  requirement.
 
 
-0.05    2015-08-17 (PERLANCAR)
+0.05    2015-08-17  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- Switch from Log::Any to Log::Any::IfLOG.
 
 
-0.04    2015-01-22 (PERLANCAR)
+0.04    2015-01-22  Released-By: PERLANCAR
 
 	- No functional changes.
 
@@ -36,16 +36,16 @@
 	  bar.
 
 
-0.03    2014-04-25 (SHARYANTO)
+0.03    2014-04-25  Released-By: SHARYANTO
 
         - Fix another bug in displaying progress message/percentage. D'oh.
 
 
-0.02    2014-04-25 (SHARYANTO)
+0.02    2014-04-25  Released-By: SHARYANTO
 
         - Fix minor bug in displaying progress message.
 
 
-0.01    2014-04-04 (SHARYANTO)
+0.01    2014-04-04  Released-By: SHARYANTO
 
         - First release.
